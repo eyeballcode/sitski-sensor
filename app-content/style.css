@@ -1,0 +1,45 @@
+body {
+  font-family: "CMU Sans Serif";
+  margin: 0;
+  --grid-size: calc(100vw / var(--grid-count));
+}
+
+.grid {
+  display: grid;
+}
+
+.grid > div {
+  border: 0.1vw solid black;
+  display: block;
+  font-size: 4vw;
+}
+
+.centroids, .lines {
+  position: absolute;
+  margin-top: -100vw;
+}
+
+.centroids > div {
+  display: block;
+  width: 4vw;
+  height: 4vw;
+  background-color: aqua;
+  position: absolute;
+  margin-left: -2vw;
+  margin-top: -2vw;
+}
+
+.lines > div {
+  display: block;
+  width: 100px;
+  height: 1vw;
+  margin-top: -0.5vw;
+  background-color: purple;
+  position: absolute;
+  transform-origin: left center;
+}
+
+#measurements {
+  padding-top: 1em;
+  font-size: 7vw;
+}

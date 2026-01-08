@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link href="/style.css" rel="stylesheet" />
+    <script>
+      const gridSize = 8
+    </script>
+    <style id="grid-style"></style>
+  </head>
+  <body>
+      <!-- <div style="width: 800px;"><canvas id="chart"></canvas></div> -->
+
+      <div id="measurements">
+        <!-- <p>Angle: <span id="angle"></span></p>
+        <p>Centre: <span id="centre"></span></p>
+        <p>Dist: <span id="dist"></span></p> -->
+        <p>Feedback: <span id="feedback"></span></p>
+      </div>
+      <div class="grid">
+      </div>
+      <div class="centroids">
+        <div id="c-0"></div>
+        <div id="c-1"></div>
+      </div>
+      <div class="lines">
+        <div id="l-cen"></div>
+        <div id="l-dir"></div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+    <script src="/render.mjs" type="module"></script>
+  </body>
+</html>
