@@ -14,3 +14,8 @@ sudo apt install git
 
 sudo timedatectl set-timezone Australia/Melbourne
 sudo timedatectl set-ntp true
+
+git clone https://github.com/eyeballcode/sitski-sensor.git
+cd sitski-sensor/
+npm i -d
+
