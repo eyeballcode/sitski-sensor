@@ -58,7 +58,7 @@ async function getPortUnix() {
 }
 
 const app = setupApp()
-app.listen(8999)
+app.listen(80)
 setupSerial()
 
 process.on('uncaughtException', console.error)
