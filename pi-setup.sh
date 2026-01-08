@@ -25,7 +25,7 @@ printf '''[Unit]
 Description=SitSki Server
 
 [Service]
-User=onboard
+User=monash
 ExecStart=/home/monash/sitski-sensor/start.sh
 Restart=always''' | sudo tee /etc/systemd/system/sitski.service
 
