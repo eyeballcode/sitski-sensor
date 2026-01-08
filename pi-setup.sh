@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 sudo hostnamectl set-hostname sitski
+sudo systemctl enable ssh
 
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 . ~/.nvm/nvm.sh
@@ -23,11 +24,18 @@ npm i -d
 
 printf '''[Unit]
 Description=SitSki Server
+Wants=network.target
+After=network.target
 
 [Service]
 User=monash
 ExecStart=/home/monash/sitski-sensor/start.sh
-Restart=always''' | sudo tee /etc/systemd/system/sitski.service
+Restart=always
+
+[Install]
+WantedBy=network.target''' | sudo tee /etc/systemd/system/sitski.service
+
+sudo systemctl enable sitski
 
 sudo nmcli con add type wifi ifname wlan0 con-name 'Sit Ski' autoconnect yes ssid 'Sit Ski'
 sudo nmcli con modify 'Sit Ski' 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared

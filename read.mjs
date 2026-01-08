@@ -2,17 +2,20 @@ import { SerialPort } from 'serialport'
 import express from 'express'
 import expressWs from 'express-ws'
 import fs from 'fs/promises'
+import path from 'path'
 
 const port = await getPortUnix() || '/dev/cu.usbmodem143401'
 let sockets = []
 
+const read = async pathname => await fs.readFile(path.join(import.meta.dirname, pathname))
+
 const setupApp = () => {
   const { app } = expressWs(express())
-  app.get('/', async (req, res) => res.end(await fs.readFile('app-content/cells.html')))
-  app.get('/cells', async (req, res) => res.end(await fs.readFile('app-content/cells.html')))
-  app.get('/render.mjs', async (req, res) => res.setHeader('Content-Type', 'application/javascript').end(await fs.readFile('app-content/render.mjs')))
-  app.get('/vec.mjs', async (req, res) => res.setHeader('Content-Type', 'application/javascript').end(await fs.readFile('app-content/vec.mjs')))
-  app.get('/style.css', async (req, res) => res.end(await fs.readFile('app-content/style.css')))
+  app.get('/', async (req, res) => res.end(await read('./app-content/cells.html')))
+  app.get('/cells', async (req, res) => res.end(await read('./app-content/cells.html')))
+  app.get('/render.mjs', async (req, res) => res.setHeader('Content-Type', 'application/javascript').end(await read('./app-content/render.mjs')))
+  app.get('/vec.mjs', async (req, res) => res.setHeader('Content-Type', 'application/javascript').end(await read('./app-content/vec.mjs')))
+  app.get('/style.css', async (req, res) => res.end(await read('./app-content/style.css')))
   app.ws('/data', async (ws, req) => {
     sockets.push(ws)
     ws.on('close', () => sockets.splice(sockets.indexOf(ws), 1))
