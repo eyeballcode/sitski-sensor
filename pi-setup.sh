@@ -10,6 +10,8 @@ nvm install node
 sudo ln "$(readlink -f `command -v node`)" /usr/bin/node
 sudo setcap 'cap_net_bind_service=+ep' /usr/bin/node
 
+npm install -g npm@latest
+
 sudo apt install git
 
 sudo timedatectl set-timezone Australia/Melbourne

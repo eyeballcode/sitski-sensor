@@ -1,7 +1,7 @@
 body {
   font-family: "CMU Sans Serif";
   margin: 0;
-  --grid-size: calc(100vw / var(--grid-count));
+  --grid-size: calc(100vw / var(--grid-count) / 1);
 }
 
 .grid {
@@ -9,31 +9,31 @@ body {
 }
 
 .grid > div {
-  border: 0.1vw solid black;
+  border: calc(max(0.1vw, 1px)) solid black;
   display: block;
-  font-size: 4vw;
+  font-size: calc(var(--grid-size) * 0.5);
 }
 
 .centroids, .lines {
   position: absolute;
-  margin-top: -100vw;
+  margin-top: calc(var(--grid-size) * -8);
 }
 
 .centroids > div {
   display: block;
-  width: 4vw;
-  height: 4vw;
+  width: calc(var(--grid-size) * 0.5);
+  height: calc(var(--grid-size) * 0.5);
   background-color: aqua;
   position: absolute;
-  margin-left: -2vw;
-  margin-top: -2vw;
+  margin-left: calc(var(--grid-size) * -0.25);
+  margin-top: calc(var(--grid-size) * -0.25);
 }
 
 .lines > div {
   display: block;
   width: 100px;
-  height: 1vw;
-  margin-top: -0.5vw;
+  height: calc(var(--grid-size) * 0.1);
+  margin-top: calc(var(--grid-size) * -0.05);
   background-color: purple;
   position: absolute;
   transform-origin: left center;
